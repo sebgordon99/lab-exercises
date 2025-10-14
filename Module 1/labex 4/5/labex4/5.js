@@ -1,10 +1,10 @@
-// console.log('Hello Seb')
+// // console.log('Hello Seb')
 
-// function greetUser(name) {
-//     return ('Hello ' + name)
-// }
+// // function greetUser(name) {
+// //     return ('Hello ' + name)
+// // }
 
-// console.log(greetUser("Sebastian"))
+// // console.log(greetUser("Sebastian"))
 
 // function addtogether(firstnumber, b) {
 //     return (firstnumber + b)
@@ -36,20 +36,38 @@
 
 // console.log(combo(1, 1, 1, 1))
 
-let thisisanarray = ['John', 'Orange','Mitsubishi', 'Banana', 'Flute']
+// let thisisanarray = ["John", "Orange", "Mitsubishi", "Banana", "Flute"];
 
-thisisanarray[1] = thisisanarray[4]
-// Replacing position 2 with 5
-thisisanarray[4] = 'Orange'
-// Manually replacing 4 with 'Orange' as I don't know how to call functions simultaneously (if possible)
+// thisisanarray[1] = thisisanarray[4];
+// // Replacing position 2 with 5
 
-thisisanarray.unshift("Chair")
-//Adding an extra element to the beginning of the array
+// thisisanarray[4] = "Orange";
+// // Manually replacing 4 with 'Orange' as I don't know how to call functions simultaneously (if possible)
 
-thisisanarray.pop()
-// Removing the last element
+// thisisanarray.unshift("Chair");
+// //Adding an extra element to the beginning of the array
 
+// thisisanarray.pop();
+// // Removing the last element
 
+// console.log(thisisanarray);
+// // Printing the array
 
-console.log(thisisanarray);
-// Printing the array
+// const d = new Date();
+// let currentyear = d.getFullYear();
+// const birthyear = 1999
+
+// function defineBirth(currentyear, birthyear){
+
+//     return (currentyear - birthyear)
+
+// }
+
+// console.log(defineBirth)
+
+function defineBirth(birthyear) {
+    const currentyear = new Date().getFullYear();
+    return currentyear - birthyear;
+}
+
+console.log(defineBirth(1999));

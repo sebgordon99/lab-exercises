@@ -1,0 +1,5 @@
+1. should display a set of dice to choose from
+2. have a button to click that activates a dice roll
+3. on click, randomly generate a number within the confines of the dice sides (random integer between 1 and side number)
+4. display the results of the number on the screen
+5. replace this result if the same or a different dice is clicked

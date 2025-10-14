@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>lab 2.1</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Lab 2.1" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Sebastian Gordon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04aa6d;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="index.html">Home</a>
+        <a href="form.html">Form</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Utilising HTML</h1>
+      <article>
+        <h2>Learning elements - div, span, p, pre, ul, li, ol, article</h2>
+        <div>HTML</div>
+        <div>CSS</div>
+        <div>JavaScript</div>
+
+        <span>Span 1</span>
+        <span>Span 2</span>
+        <span>Span 3</span>
+
+        <p>p represents paragraph without preserving spacing</p>
+        <pre>
+Text in         a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks
+      </pre
+        >
+
+        <ul>
+          <li>Lists</li>
+          <li>Orders</li>
+          <li>Observation</li>
+          <li>Creation</li>
+        </ul>
+
+        <ol>
+          <li>Make the list</li>
+          <li>Fill its contents</li>
+          <li>
+            <ol>
+              <li>Observe the results</li>
+              <li>Fix any errors</li>
+            </ol>
+          </li>
+        </ol>
+      </article>
+      <article>
+        <h2>Tables et al</h2>
+        <table>
+          <tr>
+            <th>Company</th>
+            <th colspan="2">Contact and Country</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+          </tr>
+          <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+          </tr>
+          <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+          </tr>
+          <tr>
+            <td>Island Trading</td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+          </tr>
+          <tr>
+            <td>Königlich Essen</td>
+            <td>Philip Cramer</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+          </tr>
+          <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+          </tr>
+          <tr>
+            <td>North/South</td>
+            <td>Simon Crowther</td>
+            <td rowspan="2">UK</td>
+          </tr>
+          <tr>
+            <td>Paris spécialités</td>
+            <td>Marie Bertrand</td>
+          </tr>
+        </table>
+      </article>
+      <article>
+        <h2>Adding Media</h2>
+        <img
+          src="https://picsum.photos/400/400"
+          alt="Random Image"
+          width="100%"
+          height="500px"
+        />
+        <img
+          src=".\assets\html_lab_image.jpg"
+          alt="Horizon"
+          width="100%"
+          height="auto"
+        />
+        <video autoplay width="250">
+          <source
+            src="./assets/flower.webm"
+            type="video/webm"
+            width="auto"
+            height="auto"
+          />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+
+        <!-- I changed the audio from autoplay just to stop the constant noise when editing the code -->
+        <audio controls src="./assets/t-rex-roar.mp3">
+          Your browser does not support the <code>audio</code> element.
+        </audio>
+      </article>
+    </main>
+
+    <footer>Copyright &copy; 2024</footer>
+  </body>
+</html>
