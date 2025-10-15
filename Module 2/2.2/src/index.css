@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kablammo&display=swap");
+
 /* I. Selectors */
 /* Put styles for questions 1.1, 1.2, 1.3 and 1.4 here */
 article {
@@ -27,15 +29,59 @@ article {
 }
 /* II. Box model and common properties */
 /* Put styles for questions 1-8 here */
+.box {
+  padding: 100px;
+  margin: 2em;
+  background: seagreen;
+  /* width: 50vw; */
+  width: 25vh;
+  height: 25vh !important;
+  width: "height";
+  border: 1px solid red;
+  box-sizing: content-box;
+  overflow: auto;
+  outline: 10px solid purple;
+  border-radius: 50%;
+}
+
+html {
+  background-image: url("../assets/images/img1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* III. Positioning */
 /* Put styles for questions 1-3 here */
 
 /* IV. Styling text */
 /* Put styles for questions 1-10 here */
+.text-style {
+  color: seagreen;
+  font-size: large;
+  line-height: 1.5rem;
+  font-weight: 900;
+  font-family: "Kablammo", sans-serif;
+}
 
 /* V. Styling links */
 /* Put styles for questions 1-3 here */
 
 /* VI. calc() */
 /* Put styles for questions 1-3 here */
+.calc-style {
+  background-color: powderblue;
+  width: calc(100vw - 100px);
+}
+
+.fixed-width-col {
+  display: inline-block;
+  background-color: powderblue;
+  width: 350px
+}
+
+.fluid-col {
+  display: inline-block;
+  background-color: powderblue;
+  width: calc(100% - 360px)
+}
