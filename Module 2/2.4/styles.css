@@ -1,0 +1,117 @@
+* {
+    background: rgb(231, 231, 159);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 30fr 1fr;
+    grid-template-areas: 
+    "blurb content"
+    "footer footer";
+}
+
+@media (max-width: 401px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr .1fr;
+    grid-template-areas:
+      "blurb "
+      "content"
+        "footer";
+  }
+
+  body {
+    font-size: 2vh;
+  }
+}
+
+.blurb {
+    background: rgb(163, 233, 167);
+    grid-area: blurb;
+    font-size: large;
+    padding: 5%;
+}
+
+
+.content {
+    background: rgb(131, 207, 233);
+    grid-area: content;
+    font-size: large;
+    padding: 2%;
+}
+
+.blurb * {
+    background: inherit;
+}
+
+.content * {
+    background-color: inherit;
+}
+
+.info * {
+    background-color: inherit;
+}
+
+.cow {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+
+}
+
+.blurbtitle {
+    /* border-bottom: dashed black 1px; */
+}
+
+.content {
+    display: grid;
+}
+
+.contactinfo {
+    border: 10px inset darkgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.job {
+    border-bottom: dashed black 1px;
+}
+
+.footer {
+    background: rgb(177, 129, 224);
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.skills {
+    border: 10px inset darkgreen;
+    display: grid;
+}
+
+th {
+    text-align: left;
+    
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    background-color: coral;
+}
+
+tr:hover {
+    background-color: coral;
+}
+
+h3 {
+    text-decoration: underline;
+}
