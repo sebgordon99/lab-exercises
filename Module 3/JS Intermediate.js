@@ -13,12 +13,25 @@ function ucFirstLetters(string) {
 }
 console.log(ucFirstLetters("los angeles") ) // Los Angeles
 console.log(ucFirstLetters("lowercase word") ) // Lowercase Word
-console.log(ucFirstLetters("I could be anythhhhhhhhhhhhing you like") ) // 
+console.log(ucFirstLetters("I could be anythhhhhhhhhhhhing you like") ) // I Could Be Anythhhhhhhhhhhhing You Like
 
 
 // Question 2:
 
+function truncate(str, max) {
+        let cutWord = (str.substring(0, max))
+        
+       if (cutWord.length < max ){
+return cutWord
+       }
+       return cutWord + "..."
+}
 
+
+console.log(truncate('This text will be truncated if it is too long', 25))
+// This text will be truncat...
+console.log(truncate('ee', 2))
+// ee
 
 // Question 3:
 
