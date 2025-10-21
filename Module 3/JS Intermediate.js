@@ -4,7 +4,7 @@ function ucFirstLetters(string) {
     const arrayOfStrings = string.split(" ");
     let emptyArray = []
     for (let i of arrayOfStrings) {
-       i = i[0].toUpperCase() + i.slice(1, 11);
+       i = i[0].toUpperCase() + i.slice(1, i.length);
        emptyArray.push(i)
     //    console.log(i)
     }
@@ -13,7 +13,7 @@ function ucFirstLetters(string) {
 }
 console.log(ucFirstLetters("los angeles") ) // Los Angeles
 console.log(ucFirstLetters("lowercase word") ) // Lowercase Word
-console.log(ucFirstLetters("I could be anything you like") ) // 
+console.log(ucFirstLetters("I could be anythhhhhhhhhhhhing you like") ) // 
 
 
 // Question 2:
