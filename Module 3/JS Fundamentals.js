@@ -110,3 +110,168 @@ console.log(q5result2);
 const getGreeting3 = (name2) => "Hello " + name2 + "!";
 let q5result3 = getGreeting3("John");
 console.log(q5result3);
+
+// Question 6:
+
+const westley = {
+  name: "Westley",
+  numFingers: 5,
+};
+const rugen = {
+  name: "Count Rugen",
+  numFingers: 6,
+};
+const inigo = {
+  firstName: "Inigo",
+  lastName: "Surname",
+
+  greeting(person) {
+    let greeting = `Hello ${person.name}, my name is ${this.firstName} ${this.lastName}. `;
+    console.log(greeting + this.getCatchPhrase(person));
+  },
+  getCatchPhrase(person) {
+    if (person.numFingers == 6) {
+      // person.fingers = 6, print famous catchphrase
+      return "You killed my father. Prepare to die.";
+    } else {
+      return "Nice to meet you.";
+    }
+  },
+};
+inigo.greeting(westley);
+inigo.greeting(rugen);
+
+// Question 7:
+
+const basketballGame = {
+  score: 0,
+  foul: 0,
+  freeThrow() {
+    this.score++;
+    return this;
+  },
+  basket() {
+    this.score += 2;
+    return this;
+  },
+  threePointer() {
+    this.score += 3;
+    return this;
+  },
+  foulTriggered() {
+    this.foul++;
+    return this;
+  },
+  halfTime() {
+    console.log(
+      "Halftime score is " + this.score + ". Number of Fouls is " + this.foul
+    );
+    return this;
+  },
+  fullTime() {
+    console.log(
+      "Fulltime score is " + this.score + ". Number of Fouls is " + this.foul
+    );
+    return this;
+  },
+};
+
+//modify each of the above object methods to enable function chaining as below:
+basketballGame
+  .basket()
+  .freeThrow()
+  .freeThrow()
+  .basket()
+  .threePointer()
+  .halfTime()
+  .freeThrow()
+  .foulTriggered()
+  .basket()
+  .threePointer()
+  .fullTime();
+
+// Question 8:
+
+const adelaide = {
+  name: "Adelaide",
+  population: 2_131_454,
+  state: "ADL",
+  founded: "3 February 1566",
+  timezone: "Australia/Adelaide",
+};
+
+const sydney = {
+  name: "Sydney",
+  population: 5_121_000,
+  state: "NSW",
+  founded: "26 January 1788",
+  timezone: "Australia/Sydney",
+};
+function cityInfo(city) {
+  for (const statInfo in city) {
+    // console.log(this.statInfo.city)
+    console.log(statInfo + ": " + city[statInfo]);
+  }
+}
+
+cityInfo(sydney);
+
+cityInfo(adelaide);
+
+// Question 9:
+
+let teamSports = ["Hockey", "Cricket", "Volleyball"];
+let dog1 = "Bingo";
+let cat1 = { name: "Fluffy", breed: "Siberian" };
+let moreSports = teamSports;
+let dog2 = dog1;
+let cat2 = cat1;
+moreSports.push("Soccer");
+dog2.replace("Bingo", "Spot");
+cat2.name = "Kevin";
+console.log(teamSports);
+console.log(dog1);
+console.log(cat1);
+
+// Question 10:
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+  this.canDrive = () => {
+    if (this.age >= 18) {
+      return this.name + " can drive.";
+    } else {
+      return this.name + " can't drive.";
+    }
+  };
+}
+
+let Person1 = new Person("John", "21");
+let Person2 = new Person("Tammy", "8");
+
+console.log(Person1);
+console.log(Person1.canDrive());
+console.log(Person2);
+console.log(Person2.canDrive());
+
+class PersonClass {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.human = true;
+  }
+
+  canDrive() {
+    if (this.age >= 18) {
+      return this.name + " can drive.";
+    } else {
+      return this.name + " can't drive.";
+    }
+  }
+}
+let Person3 = new PersonClass("Timmy", "4");
+
+console.log(Person3);
+console.log(Person3.canDrive());
