@@ -36,10 +36,10 @@
 
 // console.log(combo(1, 1, 1, 1))
 
-// let thisisanarray = ["John", "Orange", "Mitsubishi", "Banana", "Flute"];
+let thisisanarray = ["John", "Orange", "Mitsubishi", "Banana", "Flute"];
 
-// thisisanarray[1] = thisisanarray[4];
-// // Replacing position 2 with 5
+thisisanarray[1] = thisisanarray[4];
+// Replacing position 2 with 5
 
 // thisisanarray[4] = "Orange";
 // // Manually replacing 4 with 'Orange' as I don't know how to call functions simultaneously (if possible)
