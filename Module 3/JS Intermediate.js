@@ -183,20 +183,140 @@ console.log(getOldBooks()) // 3 matching items in books array
 // 7c
 
 function addGenre(){
-    const result = books.map(book => {
+    return books.map(book => {
        return {
               ...book,
-              category:
+              genre: 'non-fiction'
        }
     })
-return output;
 }
-console.log(output)
+const genreAdded = addGenre()
+console.log("-->", genreAdded, "<--")
+
 // 7d
+
+
 // 7e
 
 // Question 8:
 
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+console.log(phoneBookABC)
+// 8a-b:
+
+
+const phoneBookDEF = new Map()
+phoneBookDEF.set('Donna', '0455555555')
+phoneBookDEF.set('Evelyn', '0466666666')
+phoneBookDEF.set('Fiona', '0477777777')
+
+
+
+// 8c:
+phoneBookABC.set('Caroline', '0433333333')
+
+console.log(phoneBookABC)
+
+// 8d:
+
+function printPhoneBook(contacts) {
+    let result = contacts.entries()
+    console.log(result)
+}
+
+printPhoneBook(phoneBookABC)
+printPhoneBook(phoneBookDEF)
+
+
+// 8e:
+
+const mergedMap = new Map([...phoneBookABC, ...phoneBookDEF])
+
+console.log(mergedMap)
+
+// 8f:
+
+printPhoneBook(mergedMap)
+
 // Question 9:
 
+let salaries = {
+"Timothy" : 35000,
+"David" : 25000,
+"Mary" : 55000,
+"Christina" : 75000,
+"James" : 43000
+};
+
+// 9a:
+
+function sumSalaries(salaries){
+  let total = 0;
+
+  for (let value of Object.values(salaries)) {
+    total += value;
+  }
+  return total;
+}
+console.log(sumSalaries(salaries))
+
+// 9b:
+
+function topEarner(salaries){
+  let maxSalary = 0;
+  let winner = null;
+
+  for (const [name, salary] of Object.entries(salaries)) {
+    
+    if (salary > maxSalary) {
+      //return the corresponding key only
+      maxSalary = salary;
+      winner = name;
+    } 
+  }
+  return winner;
+}
+
+console.log(topEarner(salaries))
+
 // Question 10:
+
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+
+// 10a:
+
+console.log(((today.getHours() * 60) + today.getMinutes()) + ' minutes have passed so far today')
+
+// 10b:
+
+// console.log((today.getMilliseconds() * 1000) + ' seconds have passed so far today')
+
+console.log(((today.getHours() * 60 * 60) + (today.getMinutes() * 60) + (today.getSeconds())) + ' seconds have passed so far today')
+
+// 10c:
+
+let myBirth = new Date('1999-07-04')
+
+const birthInMilli = today - myBirth
+console.log(birthInMilli)
+
+let result = ("I am " + (birthInMilli / 1000 / 60 / 1440 / 364.25) + " years old, " + (birthInMilli / 1000 / 60 / 1440) + " days old, " + (birthInMilli / 1000 / 60) + " minutes old, and " + (birthInMilli / 1000) + " seconds old.")
+console.log(result)
+
+// 10d:
+
+function daysInBetween(date1, date2) {
+  let firstDate = new Date(date1);
+  let secondDate = new Date(date2);
+  let result = secondDate - firstDate;
+  let finalResult = result / 1000 / 60 / 1440
+  return "There are " + finalResult + " days between your two dates.";
+
+}
+console.log(daysInBetween('1999-07-14', '2025-10-24'))
