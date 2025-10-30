@@ -252,11 +252,11 @@ Function.prototype.delay = function(ms) {
   };
 };
 
-function multiply(a, b, c, d) {
+function multiply2(a, b, c, d) {
   console.log(a * b * c * d);
 }
 
-// multiply.delay(501)(5, 5, 5, 5);
+// multiply2.delay(501)(5, 5, 5, 5);
 
 //Question 7:
 
@@ -334,5 +334,116 @@ class AlarmClock extends DigitalClock {
 }
 
 const alarmClock = new AlarmClock("Alarm Clock", "15:06");
-alarmClock.start();
+// alarmClock.start();
 
+//Question 8:
+
+console.log("question 8 -------------")
+
+//8a:
+function validateStringArg(fn) {
+  return function(arg) {
+    if (typeof arg !== "string") {
+      throw new Error("Argument must be a string");
+    }
+    return fn(arg);
+  };
+}
+
+function orderItems(itemName) {
+return `Order placed for: ${itemName}`;
+}
+
+// create a decorated version of the original function
+const validatedOrderItem = validateStringArg(orderItems);
+
+console.log(validatedOrderItem("Apple Watch")); // should run the function
+// console.log(validatedOrderItem(123)); // should throw an error
+
+//8b-d:
+
+function validateStringArgs(fn) {
+  return function(...args) {
+    args.forEach(arg => {
+      if (typeof arg !== "string") {
+        throw new Error("All arguments must be strings");
+      }
+    });
+    return fn(...args);
+  };
+}
+
+function orderItems2(...itemNames) {
+  return `Order placed for: ${itemNames.join(", ")}`;
+}
+
+const validatedOrderItemB = validateStringArgs(orderItems2);
+
+console.log(validatedOrderItemB("Apple Watch")); //should work
+console.log(validatedOrderItemB("iPhone", "MacBook", "AirPods")); //should work
+// console.log(validatedOrderItemB("iPad", 123)); //not every argument is a string (shows an error)
+
+//Question 9: 
+
+//9a-d
+function randomDelay() {
+  return new Promise((resolve, reject) => {
+    const delay = Math.floor(Math.random() * 20000) + 1000;
+    console.log(`Generated delay: ${delay / 1000} seconds`);
+
+    setTimeout(() => {
+      if (delay % 2 === 0) {
+        resolve(`Success! Delay was even: ${delay / 1000} seconds`);
+      } else {
+        reject(`Failure! Delay was odd: ${delay / 1000} seconds`);
+      }
+    }, delay);
+  });
+}
+
+// randomDelay()
+//   .then((msg) => console.log(msg))
+//   .catch((err) => console.error(err));
+
+  //Question 10:
+
+console.log("question 10 -------------")
+
+//10a-c:
+
+import fetch from 'node-fetch';
+globalThis.fetch = fetch;
+
+async function fetchURLData(urls) {
+  try {
+    const urlArray = Array.isArray(urls) ? urls : [urls];
+
+    const fetchPromises = urlArray.map(async (url) => {
+      const response = await fetch(url);
+
+      if (response.status !== 200) {
+        throw new Error(`Request failed with status ${response.status} for ${url}`);
+      }
+
+      return response.json();
+    });
+
+    const results = await Promise.all(fetchPromises);
+
+    return Array.isArray(urls) ? results : results[0];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
+  .then(data => console.log('Single result:', data))
+  .catch(error => console.error(error.message));
+
+fetchURLData([
+  'https://jsonplaceholder.typicode.com/todos/1',
+  'https://jsonplaceholder.typicode.com/todos/2',
+  'https://jsonplaceholder.typicode.com/todos/3'
+])
+  .then(data => console.log('Multiple results:', data))
+  .catch(error => console.error(error.message));
