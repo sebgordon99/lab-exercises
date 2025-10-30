@@ -15,3 +15,18 @@ Question 4:
 but don't understand how it works beyond split and join
 
 therefore I don't understand 4b and 4c
+
+Advanced question 3c:
+
+my answer:
+let answer3c = debounce(printMe("this is the answer to 3c"), 3001)
+
+answer that didnt give errors
+let answer3c = debounce(() => printMe("this is the answer to 3c"), 3001);
+
+dont get it ^
+
+
+today ------------------------------------------------------ today
+
+question 6a, used what we worked on in class but not sure why it works (forgotten)
