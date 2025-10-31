@@ -1,0 +1,24 @@
+Tabletop wargame dice simulations:
+
+Key Requirements:
+
+1. User input for statistics and unit profiles
+2. Math engine for dice rolling and unit comparison
+3. Search function for presets
+4. image database or api for display
+5. easy to use buttons and dropdowns for user interactivity
+
+Extra features:
+
+1. a link to the shop for a particular unit if the user wants to buy them
+2. drop downs to customize particular features or images
+3. animations to display data and images dynamically after submitting
+
+
+Simple sketch designs:
+
+images attached
+
+
+Figma lo-fi/hi-fi design link:
+https://www.figma.com/make/0WD4amkEetx2JD6IfyGxtw/Dice-Roll-Simulation-App?fullscreen=1
