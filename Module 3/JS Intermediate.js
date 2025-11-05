@@ -83,41 +83,51 @@ console.log(camelCase("display")); // display
 
 // Question 5:
 
+console.log("question 5-------------------------");
+
 let twentyCents = 0.2;
 let tenCents = 0.1;
-console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`);
+// console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`);
 // 0.2 + 0.1 = 0.30000000000000004
 
 let fixedTwenty = twentyCents.toFixed(2);
 let fixedTen = tenCents.toFixed(2);
-console.log(fixedTwenty + fixedTen);
+// console.log(fixedTwenty + fixedTen);
 
 // 5a my guess is because it is converting it to a string, and adding the strings together.
+// console.log(Number(fixedTwenty) + Number(fixedTen));
 
 function currencyOperation(float1, float2, operation) {
+  let result = 0;
+  let wn1 = float1 * 100;
+  let wn2 = float2 * 100;
   if (operation == "+") {
-    let result = float1 + float2;
-    return result;
+    result = (wn1 + wn2);
+    return result / 100;
   } else if (operation == "-") {
-    let result = float1 - float2;
-    return result;
+    result = (wn1 + wn2);
+    return result / 100;
   } else if (operation == "*") {
-    let result = float1 * float2;
-    return result;
+    result = Math.round((wn1 * wn2) / 100);
+    return result / 100;
   } else if (operation == "/") {
-    let result = float1 / float2;
-    return result;
+    result = Math.round((wn1 / wn2) * 100);
+    return result / 100;
   }
   return "unknown operation";
   // let safeOperation = (Number(float1), operation, Number(float2));
   // return safeOperation;
 }
-console.log(currencyOperation(1.76, 2.56, "+"));
+console.log(currencyOperation(1.76, 2.56, "+")); //4.32
 console.log(currencyOperation(4.8, 2.02, "/"));
 console.log(currencyOperation(3, 2, "*"));
 console.log(currencyOperation(3, 2, "34"));
 
+
+
 // Question 6:
+
+console.log("question 6---------------------------");
 
 function unique(duplicatesArray) {
   return new Set(duplicatesArray);
