@@ -1,36 +1,32 @@
-const express = require("express");
-const app = express();
-// const app2 = express();
-const port = 3003;
-// const port2 = 3004;
-const testRoutes =
-require('./routes/myTestRoutes');
+const app = require('./app');
+const port = 3003
 
-const cors = require("cors");
-const corsOptions = {origin: "http://127.0.0.1:5501"};
-app.use(cors(corsOptions));
+
+const testRoutes = require("./routes/myTestRoutes");
+
+// import all user routes (up top in index.js)
+const userRoutes = require("./routes/userRoutes");
+
+
+
+
+
+
 
 // import all calculator routes (up the top)
-const calculatorRoutes =
-require('./routes/calculatorRoutes');
+const calculatorRoutes = require("./routes/calculatorRoutes");
 
-app.listen(port, () => {
-  console.log(`Example app listening at
-http://localhost:${port}`);
-});
 
-// app2.get("/", (req, res) => {
-//   res.send("Hello World 2!");
-// });
 
-// app2.listen(port2, () => {
-//   console.log(`Example app listening at
-// http://localhost:${port2}`);
-// });
+app.use("/mytest", testRoutes);
 
-app.use("/", express.static("public"));
-
-app.use('/mytest', testRoutes);
+// map the user routes to our app
+app.use("/users", userRoutes);
 
 // map the calculator routes to our app
-app.use('/calculator', calculatorRoutes);
+app.use("/calculator", calculatorRoutes);
+
+app.listen(port, () => {
+ console.log(`Example app listening at
+http://localhost:${port}`)
+})
