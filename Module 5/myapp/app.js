@@ -17,7 +17,5 @@ app.use(express.json());
 app.use("/", express.static("public"));
 
 
-
-
 // export the app
 module.exports = app;
