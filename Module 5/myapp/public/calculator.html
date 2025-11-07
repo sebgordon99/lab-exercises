@@ -4,29 +4,33 @@
   </head>
   <body>
     <!--submission form for numbers-->
-    <form
-      onsubmit="adding()"
-    >
+    <form>
       <label for="numb1">Number 1:</label><br />
       <input type="text" id="numb1" name="numb1" /><br />
       <label for="numb2">Number 2:</label><br />
       <input type="text" id="numb2" name="numb2" /><br /><br />
-      <input type="submit" value="Add Numbers" />
+      <button value="Add" onclick="adding('add')">Add</button>
+      <button value="Subtract" onclick="adding('subtract')">Subtract</button>
+      <button value="Multiply" onclick="adding('multiply')">Multiply</button>
+      <button value="Divide" onclick="adding('divide')">Divide</button>
       <input type="reset" value="Reset" />
     </form>
 
     <div>
-      Result
+      Result:
       <span id="result"></span>
     </div>
   </body>
   <script>
-function adding(){
+    
+function adding(op){
+    let v = document.getElementsByClassName("calcButton").value;
+    console.log(v);
     event.preventDefault();
     const num1 = parseFloat(document.getElementById("numb1").value);
     const num2 = parseFloat(document.getElementById("numb2").value);
     console.log(num1, num2)
-    fetch(`http://localhost:3003/calculator/add?num1=${num1}&num2=${num2}`)
+    fetch(`http://localhost:3003/calculator/${op}?num1=${num1}&num2=${num2}`)
 
 
       .then((response) => response.json())

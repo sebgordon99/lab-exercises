@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const app2 = express();
+// const app2 = express();
 const port = 3003;
-const port2 = 3004;
+// const port2 = 3004;
 const testRoutes =
 require('./routes/myTestRoutes');
 
@@ -19,14 +19,14 @@ app.listen(port, () => {
 http://localhost:${port}`);
 });
 
-app2.get("/", (req, res) => {
-  res.send("Hello World 2!");
-});
+// app2.get("/", (req, res) => {
+//   res.send("Hello World 2!");
+// });
 
-app2.listen(port2, () => {
-  console.log(`Example app listening at
-http://localhost:${port2}`);
-});
+// app2.listen(port2, () => {
+//   console.log(`Example app listening at
+// http://localhost:${port2}`);
+// });
 
 app.use("/", express.static("public"));
 
