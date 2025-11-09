@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+        margin: 20px;
+      }
+
+      .artist-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .artist-title {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .portfolio-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 1.2em;
+        margin-bottom: 8px;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 6px;
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-title"></div>
+        <img src="" alt="" />
+      </div>
+    </template>
+
+    <div id="artist-profile"></div>
+
+    <script>
+      const artist = {
+        name: "Van Gogh",
+        portfolio: [
+          {
+            title: "portrait",
+            url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image",
+          },
+          {
+            title: "sky",
+            url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+          },
+        ],
+      };
+
+      function addArtistCard(title, imageUrl) {
+        const template = document.getElementById("card-template")
+          .content.cloneNode(true);
+
+        template.querySelector(".card-title").innerText = title;
+        template.querySelector("img").src = imageUrl;
+        template.querySelector("img").alt = title;
+
+        // it took me a long time to figure out that i needed to return the template here, might have to practise this a bit more
+        return template;
+      }
+
+      function displayArtist(artist) {
+        const container = document.getElementById("artist-profile");
+
+        const artistCard = document.createElement("div");
+        artistCard.classList.add("artist-card");
+
+        const artistTitle = document.createElement("div");
+        artistTitle.classList.add("artist-title");
+        artistTitle.innerText = artist.name;
+
+        artistCard.appendChild(artistTitle);
+
+        const portfolioContainer = document.createElement("div");
+        portfolioContainer.classList.add("portfolio-list");
+
+        // Create cards for each artwork
+        artist.portfolio.forEach((item) => {
+          const card = addArtistCard(item.title, item.url);
+          portfolioContainer.appendChild(card);
+        });
+
+        artistCard.appendChild(portfolioContainer);
+        container.appendChild(artistCard);
+      }
+
+      displayArtist(artist);
+    </script>
+  </body>
+</html>
