@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Animation</title>
+    <style>
+      p {
+        animation-name: slidein;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes slidein {
+        from {
+          margin-top: 0;
+          background-color: powderblue;
+          width: 50px;
+          height: 50px;
+        }
+        50% {
+          font-size: 300%;
+          margin-top: 85%;
+          width: 200px;
+          height: 200px;
+          background-color: teal;
+          border-radius: 100px;
+        }
+        to {
+          margin-top: 0;
+          width: 50px;
+          height: 50px;
+          background-color: blueviolet;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p></p>
+  </body>
+</html>

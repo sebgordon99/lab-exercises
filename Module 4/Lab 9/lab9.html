@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eCharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <div id="main" style="width: 900px; height: 600px"></div>
+    <script type="text/javascript">
+      // Specify the configuration items and data for the chart
+
+      let myChart = echarts.init(document.getElementById("main"));
+
+      let options = {
+        title: { text: "Fake Store Categories" },
+        tooltip: {},
+        xAxis: {
+          type: "category",
+          data: [],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "# of Products",
+            type: "bar",
+            data: [],
+            itemStyle: {
+              color: "#3498db",
+            },
+          },
+        ],
+      };
+
+      fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          const categoryCounts = {};
+
+          json.forEach((product) => {
+            const category = product.category;
+            if (categoryCounts[category] === undefined) {
+              categoryCounts[category] = 0;
+            }
+            categoryCounts[category] = categoryCounts[category] + 1;
+          });
+
+          const categories = Object.keys(categoryCounts);
+          const counts = Object.values(categoryCounts);
+
+          options.xAxis.data = categories;
+          options.series[0].data = counts;
+
+          myChart.setOption(options);
+        })
+
+        .then(() => {
+          myChart.setOption(options);
+        });
+    </script>
+  </body>
+</html>
