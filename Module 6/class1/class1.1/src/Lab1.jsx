@@ -1,9 +1,8 @@
-export const Greeting = ({name="World", children}) => {
-    return (
-        <>
-        {children}
-        <div>Hello {name}</div>
-        
-        </>
-    )
-}
+export const Greeting = ({ name = "World", children }) => {
+  return (
+    <>
+      {children}
+      <div>Hello {name}</div>
+    </>
+  );
+};

@@ -1,17 +1,6 @@
-function SingleCat({ cat }) {
-  return (
-    <li>
-      The cat <strong>"{cat.name}"</strong> has the latin name{" "}
-      <i style={{ color: "red" }}>{cat.latinName}</i>, and looks like this:
-      <div>
-        <img src={cat.catUrl} alt={cat.name} />
-      </div>
-    </li>
-  );
-}
+import { useState } from "react";
 
-function BigCats() {
-  const cats = [
+const cats = [
     {
       name: "Cheetah",
       latinName: "Acinonyx jubatus",
@@ -55,16 +44,59 @@ function BigCats() {
         "https://imgs.search.brave.com/KO7u3TGRpf4U0cUSmv57op9DlIhO_wUxP3YQRYNnyuA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvY2F0L3NtYWxs/L2NhdF9QTkc1MDQ1/OC5wbmc",
     },
   ];
+
+function BigCatsSort() {
+// let currentCats = cats - this is the same as the currentCats current state.
+// currentCats = [1, 2, 3] - setting the new value of currentCats to setCurrentCats([1, 2, 3])
+const [currentCats, setCurrentCats] = useState(cats);
+  const catItems = currentCats.map((cat) => (
+   <li>
+      The cat <strong>"{cat.name}"</strong> has the latin name{" "}
+      <i style={{ color: "red" }}>{cat.latinName}</i>, and looks like this:
+      <div>
+        <img src={cat.catUrl} alt={cat.name} />
+      </div>
+    </li>
+  ));
+
+  const handleSortCatsAlphabetically = () => {
+    let alphaSortCats = [...currentCats];
+    alphaSortCats.sort((a, b) => a.name.localeCompare(b.name));
+    setCurrentCats(alphaSortCats);
+  }
+
+  const handleReverseCats = () => {
+    // first clone the original, so we don’t mutate it
+    let newCats = [...currentCats];
+    newCats.reverse(); // 2. modify the clone
+    setCurrentCats(newCats); // 3. set updated clone in state
+  };
   
+//   function isPantheras(value) {
+//     return value.latinName == "Panthera"
+//   }
+
+  const filterPantheras = () => {
+    let pantherasCats = [...currentCats];
+    let sortedPCats = pantherasCats.filter((cat) => cat.latinName.includes("Panthera"));
+
+    setCurrentCats(sortedPCats);
+  }
+
+  const handleResetList = () => {
+    let resetCats = cats;
+    setCurrentCats(resetCats);
+  }
+
   return (
-    <div className="bigCats componentBox">
-      <ul>
-        {cats.map((cat) => (
-          <SingleCat cat={cat} key={cat.name} />
-        ))}
-      </ul>
+    <div className="ReverseCatsList">
+      <ul>{catItems}</ul>
+      <button onClick={handleSortCatsAlphabetically}>Alphabet Sort Cats</button>
+      <button onClick={handleReverseCats}>Reverse Cats</button>
+      <button onClick={filterPantheras}>Filter Pantheras</button>
+      <button onClick={handleResetList}>Reset List</button>
     </div>
   );
 }
 
-export default BigCats;
+export default BigCatsSort;
