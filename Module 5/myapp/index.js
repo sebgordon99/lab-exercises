@@ -1,22 +1,13 @@
-const app = require('./app');
-const port = 3003
-
+const app = require("./app");
+const port = 3003;
 
 const testRoutes = require("./routes/myTestRoutes");
 
 // import all user routes (up top in index.js)
 const userRoutes = require("./routes/userRoutes");
 
-
-
-
-
-
-
 // import all calculator routes (up the top)
 const calculatorRoutes = require("./routes/calculatorRoutes");
-
-
 
 app.use("/mytest", testRoutes);
 
@@ -27,6 +18,6 @@ app.use("/users", userRoutes);
 app.use("/calculator", calculatorRoutes);
 
 app.listen(port, () => {
- console.log(`Example app listening at
-http://localhost:${port}`)
-})
+  console.log(`Example app listening at
+http://localhost:${port}`);
+});

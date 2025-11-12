@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       {/* <BigCats /> */}
-      <BigCatsSort/>
+      <BigCatsSort />
       <Comment
         author={{
           name: "Seb",

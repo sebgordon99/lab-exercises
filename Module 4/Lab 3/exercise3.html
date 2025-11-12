@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <style>
@@ -77,7 +77,8 @@
       };
 
       function addArtistCard(title, imageUrl) {
-        const template = document.getElementById("card-template")
+        const template = document
+          .getElementById("card-template")
           .content.cloneNode(true);
 
         template.querySelector(".card-title").innerText = title;

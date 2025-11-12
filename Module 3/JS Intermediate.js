@@ -49,7 +49,7 @@ console.log(replaceMiddleAnimal("Crocodile"));
 
 function findMatchingAnimals(beginsWith) {
   const animalMatches = animals.filter(
-    (animal) => animal[0].toUpperCase() === beginsWith.toUpperCase()
+    (animal) => animal[0].toUpperCase() === beginsWith.toUpperCase(),
   );
 
   if (animalMatches.length > 0) {
@@ -102,10 +102,10 @@ function currencyOperation(float1, float2, operation) {
   let wn1 = float1 * 100;
   let wn2 = float2 * 100;
   if (operation == "+") {
-    result = (wn1 + wn2);
+    result = wn1 + wn2;
     return result / 100;
   } else if (operation == "-") {
-    result = (wn1 + wn2);
+    result = wn1 + wn2;
     return result / 100;
   } else if (operation == "*") {
     result = Math.round((wn1 * wn2) / 100);
@@ -122,8 +122,6 @@ console.log(currencyOperation(1.76, 2.56, "+")); //4.32
 console.log(currencyOperation(4.8, 2.02, "/"));
 console.log(currencyOperation(3, 2, "*"));
 console.log(currencyOperation(3, 2, "34"));
-
-
 
 // Question 6:
 
@@ -184,87 +182,82 @@ console.log(getBookTitle(5678)); // Book not Found
 
 // 7b
 
-function getOldBooks(){
-let oldies = books.filter(book => book.year < 1950)
-return oldies;
+function getOldBooks() {
+  let oldies = books.filter((book) => book.year < 1950);
+  return oldies;
 }
-console.log(getOldBooks()) // 3 matching items in books array
+console.log(getOldBooks()); // 3 matching items in books array
 
 // 7c
 
-function addGenre(){
-    return books.map(book => {
-       return {
-              ...book,
-              genre: 'non-fiction'
-       }
-    })
+function addGenre() {
+  return books.map((book) => {
+    return {
+      ...book,
+      genre: "non-fiction",
+    };
+  });
 }
-const genreAdded = addGenre()
-console.log("-->", genreAdded, "<--")
+const genreAdded = addGenre();
+console.log("-->", genreAdded, "<--");
 
 // 7d
-
 
 // 7e
 
 // Question 8:
 
-const phoneBookABC = new Map() //an empty map to begin with
-phoneBookABC.set('Annabelle', '0412312343')
-phoneBookABC.set('Barry', '0433221117')
-phoneBookABC.set('Caroline', '0455221182')
+const phoneBookABC = new Map(); //an empty map to begin with
+phoneBookABC.set("Annabelle", "0412312343");
+phoneBookABC.set("Barry", "0433221117");
+phoneBookABC.set("Caroline", "0455221182");
 
-console.log(phoneBookABC)
+console.log(phoneBookABC);
 // 8a-b:
 
-
-const phoneBookDEF = new Map()
-phoneBookDEF.set('Donna', '0455555555')
-phoneBookDEF.set('Evelyn', '0466666666')
-phoneBookDEF.set('Fiona', '0477777777')
-
-
+const phoneBookDEF = new Map();
+phoneBookDEF.set("Donna", "0455555555");
+phoneBookDEF.set("Evelyn", "0466666666");
+phoneBookDEF.set("Fiona", "0477777777");
 
 // 8c:
-phoneBookABC.set('Caroline', '0433333333')
+phoneBookABC.set("Caroline", "0433333333");
 
-console.log(phoneBookABC)
+console.log(phoneBookABC);
 
 // 8d:
 
 function printPhoneBook(contacts) {
-    let result = contacts.entries()
-    console.log(result)
+  let result = contacts.entries();
+  console.log(result);
 }
 
-printPhoneBook(phoneBookABC)
-printPhoneBook(phoneBookDEF)
-
+printPhoneBook(phoneBookABC);
+printPhoneBook(phoneBookDEF);
 
 // 8e:
 
-const mergedMap = new Map([...phoneBookABC, ...phoneBookDEF])
+const mergedMap = new Map([...phoneBookABC, ...phoneBookDEF]);
 
-console.log(mergedMap)
+console.log(mergedMap);
 
 // 8f:
 
-printPhoneBook(mergedMap)
+printPhoneBook(mergedMap);
 
 // Question 9:
 
 let salaries = {
-"Timothy" : 35000,
-"David" : 25000,
-"Mary" : 55000,
-"Christina" : 75000,
-"James" : 43000
+  Timothy: 35000,
+  David: 25000,
+  Mary: 55000,
+  Christina: 75000,
+  James: 43000,
 };
 
 // 9a:
 
-function sumSalaries(salaries){
+function sumSalaries(salaries) {
   let total = 0;
 
   for (let value of Object.values(salaries)) {
@@ -272,52 +265,69 @@ function sumSalaries(salaries){
   }
   return total;
 }
-console.log(sumSalaries(salaries))
+console.log(sumSalaries(salaries));
 
 // 9b:
 
-function topEarner(salaries){
+function topEarner(salaries) {
   let maxSalary = 0;
   let winner = null;
 
   for (const [name, salary] of Object.entries(salaries)) {
-    
     if (salary > maxSalary) {
       //return the corresponding key only
       maxSalary = salary;
       winner = name;
-    } 
+    }
   }
   return winner;
 }
 
-console.log(topEarner(salaries))
+console.log(topEarner(salaries));
 
 // Question 10:
 
 const today = new Date();
-console.log('Current time is ' + today.toLocaleTimeString())
-console.log(today.getHours() + ' hours have passed so far today')
+console.log("Current time is " + today.toLocaleTimeString());
+console.log(today.getHours() + " hours have passed so far today");
 
 // 10a:
 
-console.log(((today.getHours() * 60) + today.getMinutes()) + ' minutes have passed so far today')
+console.log(
+  today.getHours() * 60 +
+    today.getMinutes() +
+    " minutes have passed so far today",
+);
 
 // 10b:
 
 // console.log((today.getMilliseconds() * 1000) + ' seconds have passed so far today')
 
-console.log(((today.getHours() * 60 * 60) + (today.getMinutes() * 60) + (today.getSeconds())) + ' seconds have passed so far today')
+console.log(
+  today.getHours() * 60 * 60 +
+    today.getMinutes() * 60 +
+    today.getSeconds() +
+    " seconds have passed so far today",
+);
 
 // 10c:
 
-let myBirth = new Date('1999-07-04')
+let myBirth = new Date("1999-07-04");
 
-const birthInMilli = today - myBirth
-console.log(birthInMilli)
+const birthInMilli = today - myBirth;
+console.log(birthInMilli);
 
-let result = ("I am " + (birthInMilli / 1000 / 60 / 1440 / 364.25) + " years old, " + (birthInMilli / 1000 / 60 / 1440) + " days old, " + (birthInMilli / 1000 / 60) + " minutes old, and " + (birthInMilli / 1000) + " seconds old.")
-console.log(result)
+let result =
+  "I am " +
+  birthInMilli / 1000 / 60 / 1440 / 364.25 +
+  " years old, " +
+  birthInMilli / 1000 / 60 / 1440 +
+  " days old, " +
+  birthInMilli / 1000 / 60 +
+  " minutes old, and " +
+  birthInMilli / 1000 +
+  " seconds old.";
+console.log(result);
 
 // 10d:
 
@@ -325,8 +335,7 @@ function daysInBetween(date1, date2) {
   let firstDate = new Date(date1);
   let secondDate = new Date(date2);
   let result = secondDate - firstDate;
-  let finalResult = result / 1000 / 60 / 1440
+  let finalResult = result / 1000 / 60 / 1440;
   return "There are " + finalResult + " days between your two dates.";
-
 }
-console.log(daysInBetween('1999-07-14', '2025-10-24'))
+console.log(daysInBetween("1999-07-14", "2025-10-24"));

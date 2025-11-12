@@ -1,22 +1,22 @@
 import { useState } from "react";
 
 const movies = [
-    {
-      title: "The Shawshank Redemption",
-      year: 1994,
-      synopsis: "Two imprisoned men find redemption.",
-    },
-    {
-      title: "The Dark Knight",
-      year: 2008,
-      synopsis: "Batman fights the menace known as the Joker.",
-    },
-    {
-      title: "Interstellar",
-      year: 2014,
-      synopsis: "Explorers travel through a wormhole in space.",
-    },
-  ];
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+    synopsis: "Two imprisoned men find redemption.",
+  },
+  {
+    title: "The Dark Knight",
+    year: 2008,
+    synopsis: "Batman fights the menace known as the Joker.",
+  },
+  {
+    title: "Interstellar",
+    year: 2014,
+    synopsis: "Explorers travel through a wormhole in space.",
+  },
+];
 
 export function ReverseMovies() {
   const [currentMovies, setCurrentMovies] = useState(movies);
@@ -28,9 +28,9 @@ export function ReverseMovies() {
     //   synopsis={movie.synopsis}
     // />
     <li key={movie.title}>
-        <div>{movie.title}</div>
-        <div>{movie.year}</div>
-        <div>{movie.synopsis}</div>
+      <div>{movie.title}</div>
+      <div>{movie.year}</div>
+      <div>{movie.synopsis}</div>
     </li>
   ));
 
@@ -47,7 +47,7 @@ export function ReverseMovies() {
     //use localecompare instead
     console.log(sortedMovies);
     setCurrentMovies(sortedMovies);
-  }
+  };
   return (
     <div className="ReversemoviesList">
       <ul>{movieItems}</ul>

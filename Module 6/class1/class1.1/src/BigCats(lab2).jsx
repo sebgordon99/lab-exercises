@@ -55,7 +55,7 @@ function BigCats() {
         "https://imgs.search.brave.com/KO7u3TGRpf4U0cUSmv57op9DlIhO_wUxP3YQRYNnyuA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvY2F0L3NtYWxs/L2NhdF9QTkc1MDQ1/OC5wbmc",
     },
   ];
-  
+
   return (
     <div className="bigCats componentBox">
       <ul>

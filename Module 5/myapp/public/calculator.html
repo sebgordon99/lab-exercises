@@ -22,23 +22,20 @@
     </div>
   </body>
   <script>
-    
-function calculate(operation){
-    // let v = document.getElementsByClassName("calcButton").value;
-    // console.log(v);
-    event.preventDefault();
-    const num1 = parseFloat(document.getElementById("numb1").value);
-    const num2 = parseFloat(document.getElementById("numb2").value);
-    console.log(num1, num2)
-    fetch(`http://localhost:3003/calculator/${operation}?num1=${num1}&num2=${num2}`)
-
-
-      .then((response) => response.json())
-      .then((data) => {
-        document.getElementById("result").innerHTML = data.result;
-
-      });
-
+    function calculate(operation) {
+      // let v = document.getElementsByClassName("calcButton").value;
+      // console.log(v);
+      event.preventDefault();
+      const num1 = parseFloat(document.getElementById("numb1").value);
+      const num2 = parseFloat(document.getElementById("numb2").value);
+      console.log(num1, num2);
+      fetch(
+        `http://localhost:3003/calculator/${operation}?num1=${num1}&num2=${num2}`,
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("result").innerHTML = data.result;
+        });
     }
   </script>
 </html>

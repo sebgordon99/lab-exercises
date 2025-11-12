@@ -66,8 +66,8 @@ thisisanarray[1] = thisisanarray[4];
 // console.log(defineBirth)
 
 function defineBirth(birthyear) {
-    const currentyear = new Date().getFullYear();
-    return currentyear - birthyear;
+  const currentyear = new Date().getFullYear();
+  return currentyear - birthyear;
 }
 
 console.log(defineBirth(1999));

@@ -1,4 +1,4 @@
 function square(a) {
- return a * a;
+  return a * a;
 }
 module.exports = { square };

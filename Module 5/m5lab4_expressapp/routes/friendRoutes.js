@@ -1,33 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const friends = require('../models/friends')
-
-
+const friends = require("../models/friends");
 
 // default endpoint, gets all friends
-router.get('/', (req, res) => {
-    res.json(friends)
-})
+router.get("/", (req, res) => {
+  res.json(friends);
+});
 
 // TODO - #1: Add support to the 'filter' endpoint for a new query parameter 'letter' which filters friends by starting letter
 
 router.get("/filter", (req, res) => {
   console.log(req.query);
 
-let matchingFriends = [];
+  let matchingFriends = [];
 
-//   let filterGender = req.query.gender;
+  //   let filterGender = req.query.gender;
   let filterLetter = req.query.letter;
 
-//   if (filterGender) {
-//     matchingFriends = friends.filter(
-//       (friend) => friend.gender == filterGender
-//     );
-//   }
+  //   if (filterGender) {
+  //     matchingFriends = friends.filter(
+  //       (friend) => friend.gender == filterGender
+  //     );
+  //   }
 
   if (filterLetter) {
     matchingFriends = friends.filter(
-      (friend) => friend.name[0].toLowerCase() == filterLetter.toLowerCase()
+      (friend) => friend.name[0].toLowerCase() == filterLetter.toLowerCase(),
     );
   }
 
@@ -38,7 +36,9 @@ let matchingFriends = [];
     // and an error response when there are no matches
     res
       .status(404)
-      .json({ error: "No friends matching letter starting with " + filterLetter });
+      .json({
+        error: "No friends matching letter starting with " + filterLetter,
+      });
   }
 });
 
@@ -47,19 +47,21 @@ router.get("/info", (req, res) => {
   console.log(req.headers);
 
   // Modify this response to just return info on the user-agent, content-type and accept headers
-//   res.json(req.headers); --------------- original
-const headers = req.headers;
+  //   res.json(req.headers); --------------- original
+  const headers = req.headers;
 
-const subset = (({ "user-agent": userAgent, "content-type": contentType, "accept": accept, }) => ({
+  const subset = (({
     "user-agent": userAgent,
     "content-type": contentType,
-    "accept": accept
+    accept: accept,
+  }) => ({
+    "user-agent": userAgent,
+    "content-type": contentType,
+    accept: accept,
   }))(headers);
 
   res.json(subset);
-
 });
-
 
 // TODO - #3: Modify the dynamic GET route to return a single friend object matching the dynamic 'id' request parameter
 
@@ -71,24 +73,18 @@ router.get("/:id", (req, res) => {
 
   let filterId = req.params.id;
 
-   if (filterId) {
-    matchingFriends = friends.filter(
-      (friend) => friend.id == filterId
-    );
+  if (filterId) {
+    matchingFriends = friends.filter((friend) => friend.id == filterId);
   }
 
-console.log(filterId, "------");
-console.log(friendId);
+  console.log(filterId, "------");
+  console.log(friendId);
 
-if (matchingFriends.length == 0){
-res
-      .status(404)
-      .json({ error: "No friends matching id " + filterId });
-} else {
-  res.json(matchingFriends[0]);
-}
-
+  if (matchingFriends.length == 0) {
+    res.status(404).json({ error: "No friends matching id " + filterId });
+  } else {
+    res.json(matchingFriends[0]);
+  }
 });
-
 
 module.exports = router;

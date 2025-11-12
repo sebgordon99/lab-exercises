@@ -116,7 +116,6 @@ let answer3b = debounce(printMe, 3000);
 
 //3c:
 
-
 let answer3c = debounce(() => printMe("this is the answer to 3c"), 3001);
 
 // answer3c()
@@ -125,7 +124,6 @@ let answer3c = debounce(() => printMe("this is the answer to 3c"), 3001);
 console.log("Question 4: -----------------");
 
 //4a+c:
-
 
 // function fibonacci(n, limit) {
 //   if (n <= 1) {return n;
@@ -152,7 +150,6 @@ console.log("Question 4: -----------------");
 //4b:
 let num = 1;
 
-
 // function fibonacci(n, limit) {
 //   if (n <= 1) {return n;
 //   } else if (num > limit) {
@@ -178,18 +175,18 @@ let num = 1;
 
 //Question 5:
 
-console.log("question 5 -------------")
+console.log("question 5 -------------");
 
 //5a
 
 let car = {
-make: "Porsche",
-model: '911',
-year: 1964,
+  make: "Porsche",
+  model: "911",
+  year: 1964,
 
-description() {
-console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
-}
+  description() {
+    console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+  },
 };
 
 car.description(); //works
@@ -197,7 +194,7 @@ car.description(); //works
 
 //5b:
 
-let car2 = {...car, year: 2023}
+let car2 = { ...car, year: 2023 };
 
 car2.description();
 // setTimeout(() => car2.description(), 200);
@@ -210,22 +207,22 @@ car2.description();
 
 // setTimeout(car.description.bind(car), 200);
 
-//5e: 
+//5e:
 
-let car3 = {...car, model: 912}
+let car3 = { ...car, model: 912 };
 
 // setTimeout(car3.description.bind(car3), 200);
 
 //Question 6:
 
-console.log("question 6------------")
+console.log("question 6------------");
 
 //6a:
 
-Function.prototype.delay = function(ms) {
+Function.prototype.delay = function (ms) {
   const originalFn = this;
 
-  return function(...args) {
+  return function (...args) {
     setTimeout(() => {
       originalFn(...args);
     }, ms);
@@ -233,18 +230,17 @@ Function.prototype.delay = function(ms) {
 };
 
 function multiply(a, b) {
-console.log( a * b );
+  console.log(a * b);
 }
-
 
 // multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
 
 //6b-c:
 
-Function.prototype.delay = function(ms) {
+Function.prototype.delay = function (ms) {
   const originalFn = this;
 
-  return function(...args) {
+  return function (...args) {
     const context = this; // preserve `this` if the function is a method
     setTimeout(() => {
       originalFn.apply(context, args); // call with all arguments
@@ -260,29 +256,33 @@ function multiply2(a, b, c, d) {
 
 //Question 7:
 
-console.log("question 7--------------------")
+console.log("question 7--------------------");
 
 class DigitalClock {
-constructor(prefix) {
-this.prefix = prefix;
-}
-display() {
-let date = new Date();
-//create 3 variables in one go using array destructuring
-let [hours, mins, secs] = [date.getHours(), date.getMinutes(), date.getSeconds()];
+  constructor(prefix) {
+    this.prefix = prefix;
+  }
+  display() {
+    let date = new Date();
+    //create 3 variables in one go using array destructuring
+    let [hours, mins, secs] = [
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+    ];
 
-if (hours < 10) hours = '0' + hours;
-if (mins < 10) mins = '0' + mins;
-if (secs < 10) secs = '0' + secs;
-console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
-}
-stop() {
-clearInterval(this.timer);
-}
-start() {
-this.display();
-this.timer = setInterval(() => this.display(), 1000);
-}
+    if (hours < 10) hours = "0" + hours;
+    if (mins < 10) mins = "0" + mins;
+    if (secs < 10) secs = "0" + secs;
+    console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+  }
+  stop() {
+    clearInterval(this.timer);
+  }
+  start() {
+    this.display();
+    this.timer = setInterval(() => this.display(), 1000);
+  }
 }
 // const myClock = new DigitalClock('my clock:')
 // myClock.start()
@@ -315,7 +315,7 @@ class AlarmClock extends DigitalClock {
     this.wakeUpTime = wakeUpTime;
   }
 
-   start() {
+  start() {
     super.start(); // starts the regular clock
 
     // Check every second for the alarm
@@ -323,7 +323,7 @@ class AlarmClock extends DigitalClock {
       this.display(); // show current time
 
       const now = new Date();
-      const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      const currentTime = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
       if (currentTime === this.wakeUpTime) {
         console.log("⏰ Alarm! Wake up!");
@@ -338,11 +338,11 @@ const alarmClock = new AlarmClock("Alarm Clock", "15:06");
 
 //Question 8:
 
-console.log("question 8 -------------")
+console.log("question 8 -------------");
 
 //8a:
 function validateStringArg(fn) {
-  return function(arg) {
+  return function (arg) {
     if (typeof arg !== "string") {
       throw new Error("Argument must be a string");
     }
@@ -351,7 +351,7 @@ function validateStringArg(fn) {
 }
 
 function orderItems(itemName) {
-return `Order placed for: ${itemName}`;
+  return `Order placed for: ${itemName}`;
 }
 
 // create a decorated version of the original function
@@ -363,8 +363,8 @@ console.log(validatedOrderItem("Apple Watch")); // should run the function
 //8b-d:
 
 function validateStringArgs(fn) {
-  return function(...args) {
-    args.forEach(arg => {
+  return function (...args) {
+    args.forEach((arg) => {
       if (typeof arg !== "string") {
         throw new Error("All arguments must be strings");
       }
@@ -383,7 +383,7 @@ console.log(validatedOrderItemB("Apple Watch")); //should work
 console.log(validatedOrderItemB("iPhone", "MacBook", "AirPods")); //should work
 // console.log(validatedOrderItemB("iPad", 123)); //not every argument is a string (shows an error)
 
-//Question 9: 
+//Question 9:
 
 //9a-d
 function randomDelay() {
@@ -405,13 +405,13 @@ function randomDelay() {
 //   .then((msg) => console.log(msg))
 //   .catch((err) => console.error(err));
 
-  //Question 10:
+//Question 10:
 
-console.log("question 10 -------------")
+console.log("question 10 -------------");
 
 //10a-c:
 
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 globalThis.fetch = fetch;
 
 async function fetchURLData(urls) {
@@ -422,7 +422,9 @@ async function fetchURLData(urls) {
       const response = await fetch(url);
 
       if (response.status !== 200) {
-        throw new Error(`Request failed with status ${response.status} for ${url}`);
+        throw new Error(
+          `Request failed with status ${response.status} for ${url}`,
+        );
       }
 
       return response.json();
@@ -436,14 +438,14 @@ async function fetchURLData(urls) {
   }
 }
 
-fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
-  .then(data => console.log('Single result:', data))
-  .catch(error => console.error(error.message));
+fetchURLData("https://jsonplaceholder.typicode.com/todos/1")
+  .then((data) => console.log("Single result:", data))
+  .catch((error) => console.error(error.message));
 
 fetchURLData([
-  'https://jsonplaceholder.typicode.com/todos/1',
-  'https://jsonplaceholder.typicode.com/todos/2',
-  'https://jsonplaceholder.typicode.com/todos/3'
+  "https://jsonplaceholder.typicode.com/todos/1",
+  "https://jsonplaceholder.typicode.com/todos/2",
+  "https://jsonplaceholder.typicode.com/todos/3",
 ])
-  .then(data => console.log('Multiple results:', data))
-  .catch(error => console.error(error.message));
+  .then((data) => console.log("Multiple results:", data))
+  .catch((error) => console.error(error.message));

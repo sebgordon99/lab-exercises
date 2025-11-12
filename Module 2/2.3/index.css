@@ -47,7 +47,6 @@ a:link,
 a:visited {
   color: black;
   font-weight: 600;
-
 }
 
 .flex-menu {
@@ -63,10 +62,10 @@ a:visited {
 }
 
 .flex-menu li {
-    padding: 1em;
-    flex-grow: 1;
-    margin: 0 1px;
-    text-align: center;
+  padding: 1em;
+  flex-grow: 1;
+  margin: 0 1px;
+  text-align: center;
 }
 
 .fourth-item {

@@ -1,62 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxon Date Example</title>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
-</head>
-<body>
-  <h1>Luxon Date Calculations</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxon Date Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+  </head>
+  <body>
+    <h1>Luxon Date Calculations</h1>
 
-  <div id="diff-days" class="result"></div>
-  <div id="diff-detailed" class="result"></div>
-  <div id="closest-date" class="result"></div>
-  <div id="before-after" class="result"></div>
-  <div id="london-time" class="result"></div>
+    <div id="diff-days" class="result"></div>
+    <div id="diff-detailed" class="result"></div>
+    <div id="closest-date" class="result"></div>
+    <div id="before-after" class="result"></div>
+    <div id="london-time" class="result"></div>
 
-  <script>
-    const { DateTime } = luxon;
+    <script>
+      const { DateTime } = luxon;
 
-    const today = DateTime.now();
-    const pastDate = DateTime.fromISO("1999-04-07");
+      const today = DateTime.now();
+      const pastDate = DateTime.fromISO("1999-04-07");
 
-    // the number of days since my birthday
-    const diffInDays = Math.floor(today.diff(pastDate, "days").days);
-    document.getElementById("diff-days").innerText = 
-      `Number of days since 7 April 1999: ${diffInDays} days`;
+      // the number of days since my birthday
+      const diffInDays = Math.floor(today.diff(pastDate, "days").days);
+      document.getElementById("diff-days").innerText =
+        `Number of days since 7 April 1999: ${diffInDays} days`;
 
-    // the difference from last question in years months and days
-    const diffDetailed = today.diff(pastDate, ["years", "months", "days"]).toObject();
-    document.getElementById("diff-detailed").innerText =
-      `Difference: ${Math.floor(diffDetailed.years)} years, ${Math.floor(diffDetailed.months)} months, ${Math.floor(diffDetailed.days)} days`;
+      // the difference from last question in years months and days
+      const diffDetailed = today
+        .diff(pastDate, ["years", "months", "days"])
+        .toObject();
+      document.getElementById("diff-detailed").innerText =
+        `Difference: ${Math.floor(diffDetailed.years)} years, ${Math.floor(diffDetailed.months)} months, ${Math.floor(diffDetailed.days)} days`;
 
-    //the closest date to today
-    const dateA = DateTime.fromISO("2010-06-25");
-    const dateB = DateTime.fromISO("2024-03-15");
+      //the closest date to today
+      const dateA = DateTime.fromISO("2010-06-25");
+      const dateB = DateTime.fromISO("2024-03-15");
 
-    const diffA = Math.abs(today.diff(dateA, "days").days);
-    const diffB = Math.abs(today.diff(dateB, "days").days);
+      const diffA = Math.abs(today.diff(dateA, "days").days);
+      const diffB = Math.abs(today.diff(dateB, "days").days);
 
-    const closest = diffA < diffB ? dateA : dateB;
-    document.getElementById("closest-date").innerText =
-      `Out of ${dateA.toLocaleString()} and ${dateB.toLocaleString()}, the closest to today's date is: ${closest.toLocaleString()}`;
+      const closest = diffA < diffB ? dateA : dateB;
+      document.getElementById("closest-date").innerText =
+        `Out of ${dateA.toLocaleString()} and ${dateB.toLocaleString()}, the closest to today's date is: ${closest.toLocaleString()}`;
 
-    // is the first date before or after second date
-    let comparisonText = "";
-    if (dateA < dateB) {
-      comparisonText = "The first date is before the second date.";
-    } else if (dateA > dateB) {
-      comparisonText = "The first date is after the second date.";
-    } else {
-      comparisonText = "The two dates are the same.";
-    }
-    document.getElementById("before-after").innerText = `${comparisonText}`;
+      // is the first date before or after second date
+      let comparisonText = "";
+      if (dateA < dateB) {
+        comparisonText = "The first date is before the second date.";
+      } else if (dateA > dateB) {
+        comparisonText = "The first date is after the second date.";
+      } else {
+        comparisonText = "The two dates are the same.";
+      }
+      document.getElementById("before-after").innerText = `${comparisonText}`;
 
-    // the current time in london
-    const londonTime = DateTime.now().setZone("Europe/London");
-    document.getElementById("london-time").innerText =
-      `Current time in London: ${londonTime.toFormat("HH:mm:ss")}`;
-  </script>
-</body>
+      // the current time in london
+      const londonTime = DateTime.now().setZone("Europe/London");
+      document.getElementById("london-time").innerText =
+        `Current time in London: ${londonTime.toFormat("HH:mm:ss")}`;
+    </script>
+  </body>
 </html>

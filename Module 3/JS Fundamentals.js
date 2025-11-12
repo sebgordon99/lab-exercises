@@ -59,7 +59,7 @@ console.log(
   division,
   subtraction,
   lessThan1,
-  lessThan2
+  lessThan2,
 );
 
 //Question 3:
@@ -164,13 +164,13 @@ const basketballGame = {
   },
   halfTime() {
     console.log(
-      "Halftime score is " + this.score + ". Number of Fouls is " + this.foul
+      "Halftime score is " + this.score + ". Number of Fouls is " + this.foul,
     );
     return this;
   },
   fullTime() {
     console.log(
-      "Fulltime score is " + this.score + ". Number of Fouls is " + this.foul
+      "Fulltime score is " + this.score + ". Number of Fouls is " + this.foul,
     );
     return this;
   },

@@ -69,7 +69,6 @@ html {
   position: sticky;
   background-color: brown;
   bottom: 0;
-
 }
 /* IV. Styling text */
 /* Put styles for questions 1-10 here */
@@ -91,16 +90,20 @@ a:link {
   text-decoration: dotted;
 }
 
-a:hover, a:active, a:focus {
+a:hover,
+a:active,
+a:focus {
   color: darkgoldenrod;
 }
 
 a:visited {
-    font-style: italic;
-    color: red;
+  font-style: italic;
+  color: red;
 }
 
-a:hover, a:active, a:focus {
+a:hover,
+a:active,
+a:focus {
   color: darkgoldenrod;
 }
 
