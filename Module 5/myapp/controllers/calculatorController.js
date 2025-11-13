@@ -1,7 +1,7 @@
 const Calculator = require('../libraries/Calculator');
-// const Logger = require('../libraries/Logger');
+
 let myCalc = new Calculator()
-// let myLogger = new Logger()
+
 
 const addNumbers = (req, res) => {
   let number1 = parseInt(req.query.num1);
