@@ -32,6 +32,20 @@ export function ActivityFinder() {
       });
   }, [participants]);
 
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(
+      "https://bored.api.lewagon.com/api/activity?" +
+        "type=" +
+        activityTypes
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setIsLoading(false);
+        setActivity(json.activity);
+      });
+  }, [activityTypes]);
+
   return (
     <>
       <div className="ActivityFinder componentBox">
