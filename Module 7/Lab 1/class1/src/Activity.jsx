@@ -1,4 +1,17 @@
 import { useState, useEffect } from "react";
+
+const activityTypes = [
+  "education",
+  "recreational",
+  "social",
+  "diy",
+  "charity",
+  "cooking",
+  "relaxation",
+  "music",
+  "busywork",
+];
+
 export function ActivityFinder() {
   // Fetches a random activity
   const [participants, setParticipants] = useState(1);
@@ -6,7 +19,7 @@ export function ActivityFinder() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     fetch(
       "https://bored.api.lewagon.com/api/activity?" +
         "participants=" +
@@ -18,8 +31,9 @@ export function ActivityFinder() {
         setActivity(json.activity);
       });
   }, [participants]);
-  if (isLoading === false) {
-    return (
+
+  return (
+    <>
       <div className="ActivityFinder componentBox">
         <h3>Activity Finder</h3>
         <label>
@@ -35,26 +49,28 @@ export function ActivityFinder() {
         </label>
         <div>
           <strong>Suggested Activity: </strong>
-          {activity}
+          {isLoading ? "...loading" : activity}
         </div>
       </div>
-    );
-  } else {
-    return <div className="ActivityFinder componentBox">
-        <h3>Activity Finder</h3>
+      <div className="Typefinder componentBox">
+        <h3>Activity Finder by Type</h3>
         <label>
-          Choose number of participants:
+          Choose type:
           <select
-            value={participants}
+            value={activityTypes}
             onChange={(e) => setParticipants(e.target.value)}
-            // onChange={(e) => setisLoading(false)}
           >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            {/* <option>[{activityTypes}]</option> */}
+            {activityTypes.map((type) => (
+              <option key={type}>{type}</option>
+            ))}
           </select>
         </label>
-        <div>loading please wait</div>
+        <div>
+          <strong>Suggested Activity: </strong>
+          {isLoading ? "...loading" : activity}
         </div>
-  }
+      </div>
+    </>
+  );
 }
