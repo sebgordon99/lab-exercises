@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const friends = require("../models/friends");
+let friends = require("../models/friends");
 
 // default endpoint, gets all friends
 router.get("/", (req, res) => {
@@ -86,5 +86,26 @@ router.get("/:id", (req, res) => {
     res.json(matchingFriends[0]);
   }
 });
+
+// PUT route to update a friend's data by ID
+router.put("/:id", (req, res) => {
+  let friendId = req.params.id;
+  const updatedData = req.body;
+
+  const index = friends.findIndex((friend) => friend.id === friendId);
+
+  if (index === -1) {
+    return res.status(404).json({ error: `Friend with id ${friendId} not found` });
+  }
+
+  //combinin the existing data with the new ones
+  friends[index] = { ...friends[index], ...updatedData };
+
+  res.json({
+    message: `Friend with id ${friendId} updated successfully`,
+    updatedFriend: friends[index],
+  });
+});
+
 
 module.exports = router;
