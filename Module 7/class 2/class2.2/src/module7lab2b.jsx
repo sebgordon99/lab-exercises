@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // hooks are usually named exports rather than default
 export function useData(url) {
 // state variable for holding fetched json data

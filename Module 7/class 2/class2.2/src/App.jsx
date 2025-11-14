@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { RefCounter } from './refCounter'
 import { VideoPlayer } from './videoplayer'
-import { BitcoinRates } from './module7lab2'
+import { BitcoinRates } from './module7lab2a'
 
 function App() {
   const [count, setCount] = useState(0)
