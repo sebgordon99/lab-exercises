@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router";
 import { DashboardMessages } from "../pages/DashboardPage";
 import { DashboardTasks } from "../pages/DashboardPage";
 import LoginPage from "../pages/LoginPage";
+import BitCoinPage from "../pages/BitCoinPage";
 
 
 // special component containing all the possible routes for this app
@@ -18,6 +19,7 @@ return (
 <Route index element={<Homepage {...props} />} />
 {/* nested routes, matches on /dash/messages etc */}
 <Route path='/login' element={<LoginPage {...props} />} />
+<Route path='/bitcoin' element={<BitCoinPage {...props} />} />
 <Route path="dash" element={<DashboardPage {...props} />}>
 <Route path="messages" element={<DashboardMessages />} />
 <Route path="tasks" element={<DashboardTasks />} />
