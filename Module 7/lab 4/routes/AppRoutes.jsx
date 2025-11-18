@@ -7,6 +7,7 @@ import { DashboardMessages } from "../pages/DashboardPage";
 import { DashboardTasks } from "../pages/DashboardPage";
 import LoginPage from "../pages/LoginPage";
 import BitCoinPage from "../pages/BitCoinPage";
+import PostsPage, { Post, PostList } from "../pages/PostsPage"
 
 
 // special component containing all the possible routes for this app
@@ -20,6 +21,7 @@ return (
 {/* nested routes, matches on /dash/messages etc */}
 <Route path='/login' element={<LoginPage {...props} />} />
 <Route path='/bitcoin' element={<BitCoinPage {...props} />} />
+
 <Route path="dash" element={<DashboardPage {...props} />}>
 <Route path="messages" element={<DashboardMessages />} />
 <Route path="tasks" element={<DashboardTasks />} />
@@ -27,6 +29,11 @@ return (
 <Route path='/about' element={<AboutPage {...props} />} />
 {/* special route to handle if none of the above match */}
 <Route path="*" element={<PageNotFound />} />
+<Route path='/posts' element={<PostsPage {...props} />} >
+<Route index element={<PostList />} />
+{/* dynamic param taken from route, stored in variable called id */}
+<Route path=":id" element={<Post />} />
+</Route>
 </Routes>
 )
 }

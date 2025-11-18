@@ -13,6 +13,7 @@ style={{backgroundColor: theme.background, color: theme.foreground}}>
 <li><NavLink to="/about">About</NavLink></li> */}
 <li><NavLink to="/login">Login</NavLink></li>
 <li><NavLink to="/bitcoin">Bitcoin Rates</NavLink></li>
+<li><NavLink to="/posts">Posts</NavLink></li>
 </ul> {/* ++ Add another page with route and component */}
 </nav>
 )
