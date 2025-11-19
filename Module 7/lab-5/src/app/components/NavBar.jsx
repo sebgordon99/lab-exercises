@@ -65,7 +65,7 @@ export default function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Lab5
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -119,7 +119,7 @@ export default function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Lab5
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (

@@ -2,7 +2,8 @@
 
 import { Rating } from "@mui/material";
 import { useState, useEffect, useReducer } from "react";
-
+import Box from "@mui/material/Box";
+import { ThemeProvider } from "@mui/material/styles";
 
 // useData Hook
 
@@ -27,7 +28,6 @@ export function useData(url) {
 
   return data;
 }
-
 
 // BitcoinRates Component
 
@@ -63,7 +63,6 @@ export function BitcoinRates() {
   );
 }
 
-
 // Reducer for Posts
 
 function reducer(postsResult, action) {
@@ -76,7 +75,6 @@ function reducer(postsResult, action) {
       return { ...postsResult, loading: false };
   }
 }
-
 
 // PostListReducer Component
 
@@ -91,9 +89,7 @@ export function PostListReducer() {
     fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "FETCH_SUCCESS", payload: data }))
-      .catch((err) =>
-        dispatch({ type: "FETCH_ERROR", payload: err.message })
-      );
+      .catch((err) => dispatch({ type: "FETCH_ERROR", payload: err.message }));
   }, []);
 
   return (
@@ -115,14 +111,46 @@ export function PostListReducer() {
   );
 }
 
-
 // PAGE COMPONENT (exports)
 
 export default function BitCoinPage() {
   return (
     <div className="BitCoin">
-      <BitcoinRates />
       {/* <PostListReducer /> */}
+      <ThemeProvider
+        theme={{
+          palette: {
+            primary: {
+              main: "#007FFF",
+              dark: "#0066CC",
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: 500,
+            height: 100,
+            borderRadius: 1,
+            margin: 5,
+            bgcolor: "primary.main",
+            "&:hover": {
+              bgcolor: "primary.dark",
+            },
+          }}
+        >
+            <Box sx={{
+            padding: 5,
+            borderRadius: 1,
+            bgcolor: "primary.main",
+            "&:hover": {
+              bgcolor: "primary.dark",
+            },
+          }}>
+          <BitcoinRates />
+          </Box>
+        </Box>
+      </ThemeProvider>
     </div>
   );
 }
