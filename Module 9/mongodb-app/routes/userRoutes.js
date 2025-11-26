@@ -40,4 +40,25 @@ router.delete("/:id/posts", (req, res) => {
   Controllers.postController.deleteUserPost(req, res);
 });
 
+//comment routes-----------------------------
+
+router.get("/:id/comments", (req, res) => {
+    // console.log("get user posts", req)
+  Controllers.commentController.getUserComments(req, res);
+});
+
+router.post("/create/:id/comments", (req, res) => {
+    console.log("comment here");
+  Controllers.commentController.createUserComment(req, res);
+});
+
+router.put("/:id/comments", (req, res) => {
+    // console.log("update user comments")
+  Controllers.commentController.updateUserComment(req, res);
+});
+
+router.delete("/:id/comments", (req, res) => {
+  Controllers.commentController.deleteUserComment(req, res);
+});
+
 module.exports = router;
