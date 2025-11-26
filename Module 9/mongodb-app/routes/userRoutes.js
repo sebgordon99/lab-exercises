@@ -20,9 +20,23 @@ router.delete("/:id", (req, res) => {
   Controllers.userController.deleteUser(req, res);
 });
 
+//post routes------------------------
+
 router.get("/:id/posts", (req, res) => {
-    console.log("get user posts")
+    console.log("get user posts", req)
   Controllers.postController.getUserPosts(req, res);
+});
+
+router.post("/create/:id/posts", (req, res) => {
+  Controllers.postController.createUserPost(req, res);
+});
+
+router.put("/:id/posts", (req, res) => {
+  Controllers.postController.updateUserPost(req, res);
+});
+
+router.delete("/:id/posts", (req, res) => {
+  Controllers.postController.deleteUserPost(req, res);
 });
 
 module.exports = router;
