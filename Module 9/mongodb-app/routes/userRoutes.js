@@ -20,4 +20,9 @@ router.delete("/:id", (req, res) => {
   Controllers.userController.deleteUser(req, res);
 });
 
+router.get("/:id/posts", (req, res) => {
+    console.log("get user posts")
+  Controllers.postController.getUserPosts(req, res);
+});
+
 module.exports = router;
