@@ -23,7 +23,7 @@ router.delete("/:id", (req, res) => {
 //post routes------------------------
 
 router.get("/:id/posts", (req, res) => {
-    // console.log("get user posts", req)
+  // console.log("get user posts", req)
   Controllers.postController.getUserPosts(req, res);
 });
 
@@ -32,7 +32,7 @@ router.post("/create/:id/posts", (req, res) => {
 });
 
 router.put("/:id/posts", (req, res) => {
-    console.log("update user posts")
+  console.log("update user posts");
   Controllers.postController.updateUserPost(req, res);
 });
 
@@ -43,17 +43,17 @@ router.delete("/:id/posts", (req, res) => {
 //comment routes-----------------------------
 
 router.get("/:id/comments", (req, res) => {
-    // console.log("get user posts", req)
+  // console.log("get user posts", req)
   Controllers.commentController.getUserComments(req, res);
 });
 
 router.post("/create/:id/comments", (req, res) => {
-    console.log("comment here");
+  console.log("comment here");
   Controllers.commentController.createUserComment(req, res);
 });
 
 router.put("/:id/comments", (req, res) => {
-    // console.log("update user comments")
+  // console.log("update user comments")
   Controllers.commentController.updateUserComment(req, res);
 });
 
@@ -72,7 +72,7 @@ router.post("/create/:id/likes", (req, res) => {
 });
 
 router.put("/:id/likes", (req, res) => {
-    console.log("update user likes")
+  console.log("update user likes");
   Controllers.likeController.updateUserLike(req, res);
 });
 
