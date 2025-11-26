@@ -23,7 +23,7 @@ router.delete("/:id", (req, res) => {
 //post routes------------------------
 
 router.get("/:id/posts", (req, res) => {
-    console.log("get user posts", req)
+    // console.log("get user posts", req)
   Controllers.postController.getUserPosts(req, res);
 });
 
@@ -32,6 +32,7 @@ router.post("/create/:id/posts", (req, res) => {
 });
 
 router.put("/:id/posts", (req, res) => {
+    console.log("update user posts")
   Controllers.postController.updateUserPost(req, res);
 });
 
