@@ -22,4 +22,15 @@ router.delete("/:id", (req, res) => {
   Controllers.userController.deleteUser(req, res);
 });
 
+//post routes -----------------------------------------------------
+
+router.get("/", (req, res) => {
+  Controllers.postController.getUserPosts(req, res);
+});
+
+// matches POST requests sent to /api/users/create
+router.post("/create/:id/post", (req, res) => {
+  Controllers.postController.createPost(req.body, res);
+});
+
 module.exports = router;

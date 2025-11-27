@@ -80,4 +80,10 @@ router.delete("/:id/likes", (req, res) => {
   Controllers.likeController.deleteUserLike(req, res);
 });
 
+//lab 4 microservice route----------------------------------------------------------------
+
+// router.get("/", (req, res) => {
+//   Controllers.userController.getUsers(res);
+// });
+
 module.exports = router;

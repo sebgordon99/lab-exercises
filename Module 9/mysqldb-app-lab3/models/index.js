@@ -17,9 +17,15 @@ init();
 Post.belongsTo(User);
 Comment.belongsTo(User);
 Like.belongsTo(User);
+Comment.belongsTo(Post);
+Like.belongsTo(Post);
+Like.belongsTo(Comment);
 User.hasMany(Post);
 User.hasMany(Comment);
 User.hasMany(Like);
+Post.hasMany(Comment);
+Post.hasMany(Like);
+Comment.hasMany(Like);
 
 module.exports = {
   User, // export the model
