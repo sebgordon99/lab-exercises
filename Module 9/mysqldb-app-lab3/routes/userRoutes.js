@@ -24,17 +24,45 @@ router.delete("/:id", (req, res) => {
 
 //post routes -----------------------------------------------------
 
-router.get("/", (req, res) => {
-  Controllers.postController.getUserPosts(req, res);
-});
+// router.get("/", (req, res) => {
+//   Controllers.postController.getUserPosts(req, res);
+// });
 
 router.get("/posts", (req, res) => {
   Controllers.postController.getPosts(res);
 });
 
 // matches POST requests sent to /api/users/create
-router.post("/create/:id/post", (req, res) => {
-  Controllers.postController.createPost(req.body, res);
+router.post("/create/post/:id", (req, res) => {
+  Controllers.postController.createPost(req, res);
 });
+
+router.put("/post/:id", (req, res) => {
+  Controllers.postController.updatePost(req, res);
+});
+
+// matches DELETE requests to /api/users/123 (123 in id param)
+router.delete("/post/delete/:id", (req, res) => {
+  Controllers.postController.deletePost(req, res);
+});
+
+//comment routes ---------------------------------------------------------------
+
+router.get("/comments", (req, res) => {
+  Controllers.commentController.getComments(res);
+});
+
+router.post("/create/comment/:id", (req, res) => {
+  Controllers.commentController.createComment(req, res);
+});
+
+router.put("/comment/:id", (req, res) => {
+  Controllers.commentController.updateComment(req, res);
+});
+
+router.delete("/comment/delete/:id", (req, res) => {
+  Controllers.commentController.deleteComment(req, res);
+});
+
 
 module.exports = router;

@@ -1,10 +1,10 @@
 "use strict";
 const Models = require("../models");
 
-const getUserPosts = (req, res) => {
-  // finds all posts for a given user and includes matching user details
-  Models.Post.findAll({
-    where: { author: req.params.id },
+const getUserComments = (req, res) => {
+  // finds all Comments for a given user and includes matching user details
+  Models.Comment.findAll({
+    where: { author: parseInt(req.params.id) },
     include: Models.User,
   })
     .then((data) => res.send({ result: 200, data: data }))
@@ -14,8 +14,8 @@ const getUserPosts = (req, res) => {
     });
 };
 
-const getPosts = (res) => {
-  Models.Post.findAll({})
+const getComments = (res) => {
+  Models.Comment.findAll({})
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -25,8 +25,8 @@ const getPosts = (res) => {
     });
 };
 
-const createPost = (req, res) => {
-  Models.Post.create({...req.body, author: req.params.id})
+const createComment = (req, res) => {
+  Models.Comment.create({...req.body, author: parseInt(req.params.id)})
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -36,8 +36,8 @@ const createPost = (req, res) => {
     });
 };
 
-const updatePost = (req, res) => {
-  Models.Post.update(req.body, {
+const updateComment = (req, res) => {
+  Models.Comment.update(req.body, {
     where: { id: req.params.id },
     returning: true,
   })
@@ -50,8 +50,8 @@ const updatePost = (req, res) => {
     });
 };
 
-const deletePost = (req, res) => {
-  Models.Post.destroy({ where: { id: req.params.id } })
+const deleteComment = (req, res) => {
+  Models.Comment.destroy({ where: { id: req.params.id } })
     .then((data) => {
       res.send({ result: 200, data: data });
     })
@@ -62,9 +62,9 @@ const deletePost = (req, res) => {
 };
 
 module.exports = {
-  getUserPosts,
-  getPosts,
-  createPost,
-  updatePost,
-  deletePost,
+  getUserComments,
+  getComments,
+  createComment,
+  updateComment,
+  deleteComment,
 };
