@@ -28,6 +28,10 @@ router.get("/", (req, res) => {
   Controllers.postController.getUserPosts(req, res);
 });
 
+router.get("/posts", (req, res) => {
+  Controllers.postController.getPosts(res);
+});
+
 // matches POST requests sent to /api/users/create
 router.post("/create/:id/post", (req, res) => {
   Controllers.postController.createPost(req.body, res);

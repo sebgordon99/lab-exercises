@@ -22,7 +22,7 @@ Like.init(
         key: "id",
       },
     },
-    post: {
+    post_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
@@ -30,7 +30,7 @@ Like.init(
         key: "id",
       },
     },
-    comment: {
+    comment_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
