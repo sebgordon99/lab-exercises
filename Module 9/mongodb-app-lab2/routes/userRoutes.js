@@ -21,6 +21,9 @@ router.delete("/:id", (req, res) => {
 });
 
 //post routes------------------------
+router.get("/posts", (req, res) => {
+  Controllers.postController.getPosts(res);
+});
 
 router.get("/:id/posts", (req, res) => {
   // console.log("get user posts", req)
@@ -42,6 +45,10 @@ router.delete("/:id/posts", (req, res) => {
 
 //comment routes-----------------------------
 
+router.get("/comments", (req, res) => {
+  Controllers.commentController.getComments(res);
+});
+
 router.get("/:id/comments", (req, res) => {
   // console.log("get user posts", req)
   Controllers.commentController.getUserComments(req, res);
@@ -62,6 +69,10 @@ router.delete("/:id/comments", (req, res) => {
 });
 
 //like routes------------------------------------
+
+router.get("/likes", (req, res) => {
+  Controllers.likeController.getLikes(res);
+});
 
 router.get("/:id/likes", (req, res) => {
   Controllers.likeController.getUserLikes(req, res);

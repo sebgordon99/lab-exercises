@@ -1,6 +1,16 @@
 "use strict";
 let Models = require("../models"); // matches index.js
 
+const getLikes = (res) => {
+  // finds all likes
+  Models.Like.find({})
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
 const getUserLikes = (req, res) => {
   Models.Like.find({ userId: req.params.uid })
     .populate({ path: "author" })
@@ -42,6 +52,7 @@ const deleteUserLike = (req, res) => {
 
 module.exports = {
   getUserLikes,
+  getLikes,
   createUserLike,
   updateUserLike,
   deleteUserLike,

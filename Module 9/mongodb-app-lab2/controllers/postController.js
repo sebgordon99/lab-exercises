@@ -1,6 +1,16 @@
 "use strict";
 let Models = require("../models"); // matches index.js
 
+const getPosts = (res) => {
+  // finds all posts
+  Models.Post.find({})
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
 const getUserPosts = (req, res) => {
   // finds all posts for a given user and populates with user details
   Models.Post.find({ userId: req.params.uid })
@@ -42,6 +52,7 @@ const deleteUserPost = (req, res) => {
 };
 
 module.exports = {
+  getPosts,
   getUserPosts,
   createUserPost,
   updateUserPost,
