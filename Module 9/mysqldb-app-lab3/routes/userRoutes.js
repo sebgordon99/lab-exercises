@@ -64,5 +64,22 @@ router.delete("/comment/delete/:id", (req, res) => {
   Controllers.commentController.deleteComment(req, res);
 });
 
+//like routes --------------------------------------------------------------------
+
+router.get("/likes", (req, res) => {
+  Controllers.likeController.getLikes(res);
+});
+
+router.post("/create/like/:id", (req, res) => {
+  Controllers.likeController.createLike(req, res);
+});
+
+router.put("/like/:id", (req, res) => {
+  Controllers.likeController.updateLike(req, res);
+});
+
+router.delete("/like/delete/:id", (req, res) => {
+  Controllers.likeController.deleteLike(req, res);
+});
 
 module.exports = router;
