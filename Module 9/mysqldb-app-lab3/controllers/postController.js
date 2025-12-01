@@ -4,7 +4,7 @@ const Models = require("../models");
 const getUserPosts = (req, res) => {
   // finds all posts for a given user and includes matching user details
   Models.Post.findAll({
-    where: { userId: req.params.uid },
+    where: { author: req.params.id },
     include: Models.User,
   })
     .then((data) => res.send({ result: 200, data: data }))
@@ -14,7 +14,7 @@ const getUserPosts = (req, res) => {
     });
 };
 
-const getPosts = (res) => {
+const getPosts = (req, res) => {
   Models.Post.findAll({})
     .then((data) => {
       res.send({ result: 200, data: data });
@@ -25,7 +25,7 @@ const getPosts = (res) => {
     });
 };
 
-const createPost = (data, res) => {
+const createPost = (req, res) => {
   Models.Post.create({...req.body, author: req.params.id})
     .then((data) => {
       res.send({ result: 200, data: data });
